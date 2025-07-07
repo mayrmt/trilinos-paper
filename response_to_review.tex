@@ -120,7 +120,139 @@ There was no mention of compile times in the paper.
 \Review{2}
 
 %%%%%%%%
-\Comment{Repeat the first comment by Reviewer 2 here.}
+\Comment{The manuscript under review presents the quite well-known software package framework Trilinos.
+The more than 30 pages document provide an update overview of the original presentation of Trilinos which dates back to 2005.
+The paper delivers the update with a systematic overview of all the packages provided by Trilinos divided in a number of categories named ``product areas''
+which are meant to give a logical division of the various packages included in Trilinos.\\\\
+The manuscript provides a systematic description of the areas and the packages within. Each
+package is described in its own subsection and connections or dependencies between packages within
+the same areas are described in details. Each package is described using many abstract concepts
+that are not always accessible by the average reader. For example, while a typical reader could be
+an expert in sparse linear algebra constructs and concepts it may be completely foreign to concepts
+in discretization or problem analysis.\\\\
+The paper provides a lot of information and it definitely constitute a useful and overdue update
+on the evolution of Trilinos in the last 20 years. Despite its many achievements, it feels sometimes
+a bit too terse and fails to breach the communication barrier for non-expert in some of the specific
+areas or packages described. This is an important shortcoming because it may fail to attract
+additional users to Trilinos which, I believe, would be a desirable outcome of the manuscript.
+This could be also the result of a manuscript which has probably seen many authors contributing.
+Despite the fact that the language level is fairly uniform, there are subsections that are clearly
+more effective in delivering their content than others (see detailed comments).\\\\
+Overall, I believe the manuscript is definitely worth considering for publication as long as the
+detailed comments listed below are taken into consideration.}
+
+\Response{Respond to the reviewer's comment.
+Explain why we did changes to the manuscript based on his/her comment.}
+
+\noindent\textbf{Section 1}
+\Comment{Page 3, subsec 1.1, paragraph 3 – ``... execution and memory spaces...'' Please provide an
+explicit explanation of is intended with the spaces above.}
+
+\Comment{Page 3, subsec 1.2, par. 2 – Please define explicitly the meaning of the term ``snapshotting''}
+
+\Comment{Page 5, par 1 – What is exactly intended with ``high-level'' algorithms? Is there something like
+“low-level” algorithms?}
+
+\Comment{Page 5, par 1 and 2 – automatic differentiation is mentioned in both the ``Non-linear Solvers
+and Analysis Tools'' and ``Discretization Tools''. I would suggest that already at this stage an
+explanation of the difference between these AD is provided}
+
+\Comment{Page 5, subsec 1.3 – I would strongly recommend to give in this section an overview of how
+much has changed from the 2005 paper and current one. Implicitly, such a overview would give the
+extent of how much the Trilinos project has evolved and the volume of the original contributions
+included in this evolution.}
+
+\noindent\textbf{Section 2}
+
+\Comment{Page 6, subsec 2.2, par 4 -- ``batched dense and sparse linear algebra'' The reference here is on linear solvers only. What about BLAS? Also later the text says ``..on these general capabilities''; it is unclear what capabilities it refers to.}
+
+\Comment{Page 5-6 -- A general comment is in order here. It is not clear how much of the Kokkos development is carried out under the Trilinos framework and how much is external/independent. Could you please make this as much as possible explicit?}
+
+\Comment{Page 6, subsec 2.3 -- From the way Teuchos is described I would rather call it a ``programming interface''. The word ``tools'' convey the wrong impression, in my opinion.}
+
+\Comment{Page 6, subsec 2.4 -- ``dense vectors''. In section 2.2 it is claimed that Kokkos kernels can provide ``batched dense linear algebra'' but is this section Tpetra supports only dense vectors not dense matrices. I have hard time reconciling these the ability of doing dense linear algebra at the node level with the apparent inability of doing the same at the distributed level. A clarification would help here.}
+
+\Comment{Page 7, par 1 -- Could you give a simple example of ``Map data structure''.}
+
+\Comment{Page 7, 1st bullet point -- Why associating BLAS-1 like kernels with TSQR?}
+
+\Comment{Page 7, 3rd bullet point -- ``Associated kernels...''. Can you be a bit more explicit in saying how kernels are associated with matrix storage format?}
+
+\Comment{Page 7, subsec 2.5 -- ``.. the algorithms can be ... implementation such ..''. This whole sentence is unclear to me. When it talks about Krylov solver, is this a solver the Mat-Vec can be executed using kernels from another library? Is this the level of abstraction or something else?}
+
+\Comment{Page 7, subsec 2.5, 1st bullet point -- ``... performance can be difficult.'' I find this paragraph and especially the sentence ending the words above confusing. What I understand is that Thyra and Tpetra have overlapping scopes. Tpetra targets distributed linear algebra but it looks it also provides methods like AXPY. What is then the distinction with Thyra?}
+
+\Comment{Page 8, line 1 -- ``factories''. No idea what it is intended with this term.}
+
+\Comment{Page 8, par 1 -- ``... with the ANAs ... given in section 3.8'' Despite the text gives an example, I feel lost and find the example more confusing than illuminating.}
+
+\Comment{Page 8, subsec 2.6, par 3 -- ``Zoltan2 ... (via Kokkos)''. Another source of confusion. I understood that what is described here is Tpetra’s goal}
+
+\noindent\textbf{Section 3}
+
+\Comment{Page 9, line 2 -- I am not familiar with the ``traits mechanism'' concept. I would encourage to be less terse.}
+
+\Comment{Page 9, par 1 -- ``... powerful solver managers..'' too abstract and not very operational description. I would suggest to clarify.}
+
+\Comment{Page 9, par 2 -- ``Belos .... solve the right-hand side'' An example on how the manager works across solvers would be very helpful here.}
+
+\Comment{Page 10, line 1 -- ``H(curl) and H(div) discretizations ...'' this sentence may result cryptic for the person unfamiliar with the notation.}
+
+\Comment{Page 10, subsec 3.3, par 1 -- ``wide range of challeging problems'' Like what? Perhaps the paragraph starting with ``FROSch has been applied...'' should be moved to an earlier position in the subsection.}
+
+\Comment{Page 10, subsec 3.3, last sentence -- ``..with performance gains... on GPU'' It would help to be more explicit here by at least mentioning the order of magnitude of the gains.}
+
+\Comment{Page 11, par 1 -- ``MueLu is extensible and allow for the reseacrh and developemnt of new...'' The package allows for the research and development? Unclear what is meant by the author. Just two lines below ``Blue Gene/Q system'' This is a quite old system and the data referring to it is quite outdated. I suggest to cite something more recent.}
+
+\Comment{Page 12, subsec 3.5 -- The direct solvers described in this section seem to be application specific. Nothing wrong with it but it should be perhaps emphasized if they could be used with other problems.}
+
+\Comment{Page 12, subsec 3.5, par 2 -- I am not sure of the definition of BTF here. Is it really block triangular or should it be block tridiagonal? Please check. At the end of the paragraph the acronym KLU is undefined.}
+
+\Comment{Page 12, subsec 3.5, par 3 -- ``In addition... FROSch).'' So both Taco and Basker are node-level solvers only? This was not clear. Perhaps it could be made more explicit.}
+
+\Comment{Page 12, subsec 3.5, last par -- From this paragraph I evince that Amesos2 is only an interface not a solver package. Is this correct? Please clarify.}
+
+\Comment{Page 12-13, subsec 3.6 -- The whole subsection is a bit unclear. I don’t have a clear idea of what Teko does. An example could perhaps clarify its scope.}
+
+\Comment{Page 13, subsec. 3.8 -- The description in this subsection sounds very nice indeed. I would very much like an example of the versatility of the interface. Also, why Anasazi is not included? Is the requirement of having a RHS such a constraint for the interface to exclude eigensolvers?}
+
+\noindent\textbf{Section 4}
+
+\Comment{Page 14, subsec 4.1, par 1 -- ``custom implementations'' of what? Please explain.}
+
+\Comment{Page 14, subsec 4.2, par 1 -- ``any computational hardware'' A bit too eager of a statement. Does it include neuromorphic architectures of FPGAS or Quantum accelerators? I doubt it. Just tone it down. Also later ``many-core systems'' is a term that refers already to accelerators as opposed to multi-core systems. Please correct.}
+
+\Comment{Page 14, subsec 4.2, first bullet point -- ``ROL::Vector class...'' Can you explain why there is the need for another abstraction for vectors on top of the one already provided by other packages?}
+
+\Comment{Page 15, subsec 4.2, 2nd bullet point -- ``risck-averse problems'' I think there should be a definition of this concept for the non-expert reader.}
+
+\Comment{Page 15, subsec 4.2, 3rd bullet point -- ``data science and machine learning'' Perhaps a reference here? LASSO? Else?}
+
+\Comment{Page 15, subsec 4.2, last bullet point -- I find the description of this package based on the assumption that the only viable discretization is based on finite elements. What about finite differences? Perhaps this should be exemplified.}
+
+\Comment{Page 16, subsec 4.4, par 2 -- ``... to be outer-spatial and inner stochastic'' I have no idea what this sentence mean. This is a bit too cryptic.}
+
+\Comment{Page 16, subsec 4.4, par 3 -- ``.. Tpetra solver stack as a template...'' What does this mean? Also at the end of the paragraph ``union of the information'' What information? Totally unclear.}
+
+\Comment{Page 16, subsec 4.5, par 1 -- ``performing parameter continuation'' Isn’t this carried out by the LOCA package? I am confused. Is this another abstraction interface?}
+
+\Comment{Page 16, subsec 4.5, 1st bullet point -- The text here sounds way too high-level and vague. It reads to me as there is very little practical information.}
+
+\Comment{Page 17, subsec 4.5, 1st bullet point -- Clarify what LOCA does and what Piro does. As it is I find it quite confusing. As a general comment, I also do not understand why interfaces and solvers have to be packed in separate packages. It increases the confusion.}
+
+\noindent\textbf{References}
+
+\Comment{Be careful to unify the convention adopted with authors name. compare for example the first
+author of [17], [18] with [19], [20].}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Reviewer 3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
+\Review{3}
+
+%%%%%%%%
+\Comment{asdf}
 
 \Response{Respond to the reviewer's comment.
 Explain why we did changes to the manuscript based on his/her comment.}
