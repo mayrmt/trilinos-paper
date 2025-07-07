@@ -1,0 +1,44 @@
+%%============================ about
+%% This package provides the macros for responses 
+%% to the reviewers
+%% 
+%% This package is based on the experiences of the 
+%% - Institute for Computational Mechanics, TUM
+%% - Mechanics & High Performance Computing Group, TUM
+%%
+%% Author: Matthias Mayr
+%% Date: 01/2019
+%%============================ package name
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{layout_response_to_review}[2019/01/30 Response to Reviewers]
+\newlength\mparindent
+\setlength\mparindent{0mm}
+\DeclareOption{parindent}{\setlength\mparindent{\parindent}}
+\ProcessOptions
+%%---------------------------- check necessary packages
+\RequirePackage{color}
+%%============================ macros
+\definecolor{mygreen}{rgb}{0.0,0.63,0.0}
+
+\newcommand{\ThanksToAll}[0]{\noindent The authors would like to thank the reviewers for their comments that helped to improve the manuscript. In the following, all points of the reviewers are addressed where first the reviewer's comment is repeated in italic and then replied to in green color. Changes to the manuscript have been made in most points. The modified sentences of the manuscript are appended in blue color after each response.\\}
+
+\newcommand{\Thanks}[0]{The authors would like to thank the reviewer for his/her comments that helped to improve the manuscript. In the following, all points of the reviewer are addressed where first the reviewer's comment is repeated in italic and then replied to in green color. Changes to the manuscript have been made in most points. The modified sentences of the manuscript are appended in blue color after each response.}
+
+% General changes to be announced to all reviewers
+\newcommand{\MajorChanges}[1]{\noindent\textbf{Major Changes}: New title: Fully coupled mortar-penalty type embedding of one-dimensional fibers into three-dimensional fluid flow \\ \\ \noindent #1}
+
+% Header for each individual reviewer
+\newcommand{\Review}[1]{\par\noindent\textbf{Response to Review \##1}: \\ \\ \noindent \Thanks \\ \\} %\\ \\
+
+% Repeat the comments by the reviewer
+\newcommand{\Comment}[1]{\par\noindent\textit{#1}\\}
+
+% Our response to these comments
+\newcommand{\Response}[1]{\par\noindent  \textcolor{mygreen}{#1}\\}
+\newcommand{\QuoteReviewer}[1]{~\vspace{1em}\par\begingroup\noindent\leftskip=1cm ``#1''\\ \rightskip=1cm\par\endgroup}
+
+% Repeat our changes in the manuscript
+\newcommand{\Changes}[1]{\par\begingroup\noindent\leftskip=1cm \textcolor{blue}{``#1''\\} \rightskip=1cm\par\endgroup}
+
+% Mark a todo for internal use
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{ToDo: }#1}}

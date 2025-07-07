@@ -1,0 +1,130 @@
+\documentclass[a4paper,10pt]{article}
+
+% include some standard latex packages
+\usepackage{geometry}
+\geometry{a4paper, top=25mm, left=25mm, right=25mm, bottom=30mm}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsfonts,amsmath,bm}
+\usepackage[mathscr]{eucal}
+\usepackage[amssymb,thinqspace,thinspace]{SIunits}
+\usepackage{hyphenat}
+\usepackage{subfigure}
+\usepackage{float}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+% include our own response package
+\usepackage{layout_response_to_review}
+
+%% Include your own defines located in 'defines.tex'
+\include{defines}
+
+%% Enable cross-references to main document of the paper
+% Use either xr or xr-hyper and hyperref
+%\usepackage{xr}
+\usepackage{xr-hyper}
+\usepackage{hyperref}
+\externaldocument{main}
+
+%% redefine thanking if necessary
+%\renewcommand{\Thanks}{The authors would like to thank the reviewer ...}
+
+%% Insert title and list of authors
+\title{{\small Response to the review of the manuscript:}\\Trilinos: Enabling Scientific Computing across Diverse Hardware Architectures at Scale}
+\author{Matthias Mayr, Alexander Heinlein, Christian A. Glusa, Sivasankaran Rajamanickam, Maarten Arnst, Roscoe A. Bartlett, Luc Berger-Vergiat, Erik G. Boman, Karen D. Devine, Graham Harper, Michael A. Heroux, Mark Hoemmen, Jonathan J. Hu, Brian Kelley, Drew P. Kouri, Paul Kuberry, Kyungjoo Kim, Kim Liegois, Curtis C. Ober, Roger P. Pawlowski, Carl Pearson, Mauro Perego, Eric T. Phipps, Denis Ridzal, Nathan V. Roberts, Christopher M. Siefert, Heidi K. Thornquist, Romin Tomasetti, Christian R. Trott, Raymond S. Tuminaro, James M. Willenbring, Michael Wolf, Ichitaro Yamazaki}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\ThanksToAll
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Reviewer 1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
+\Review{1}
+
+%%%%%%%%
+\Comment{Comments:
+The paper presents high-level details of the Trilinos open-source library.  Each package in Trilinos is summarized.
+While no results are shown, having a general description of the library is beneficial to the community.
+I recommend the paper be published after a few minor changes.}
+
+\Comment{Minor changes to paper:
+\begin{itemize}
+\item Change the section 2.4 heading for Tpetra to be "Distributed-Memory: Tpetra", and add several paragraphs at the start of the Tpetra library describing its general utility to all codes that seek MPI+Kokkos parallelism, adding references to examples that use Tpetra for HPC applications.
+Reason:
+The Tpetra library utility extends way beyond linear solvers.  The authors should highlight its full use, starting with its generality and then discuss specific applications of the library like using it with linear solvers.  The discussion of Tpetra library should start with how it supports distributed data types and parallel algorithms to leverage MPI+Kokkos, enabling users to implement multi-physics codes that exploit modern HPC machines.  One such example is the LANL open-source Fierro code (please cite it), which builds its MPI+Kokkos parallelism using Trilinos's Zoltan+Tpetra library (plus Kokkos kernels etc.).  In other words, code projects that may not need the Trilinos solvers (e.g., explicit hydrodynamic methods) will greatly benefit from using Zoltan+Tpetra (plus Kokkos etc).   Furthermore, by building on Tpetra, codes like Fierro can also seamlessly interface with the Trilinos solvers, allowing for example, novel topology optimization research leveraging MueLu and ROL, please see and cite:
+\\\\
+Diaz, A., Morgan, N. \& Bernardin, J. Parallel 3D topology optimization with multiple constraints and objectives. Optim Eng 25, 1531–1557 (2024). https://doi.org/10.1007/s11081-023-09852-6\\\\
+Note, the above optimization work by Diaz et. al. only considered MPI parallelism; however, the authors have presented work at conferences on methods in Fierro that use MPI+Kokkos parallelism, leveraging Trilinos's Zoltan+Tpetra (etc) libraries.\\\\
+Yes, Tpetra can be used with the linear solvers, but it's so much more than that.  It's a core library, not a linear algebra library.  As such, Tpetra is foremost a library that software teams should use when implementing MPI+Kokkos parallelism, impacting a huge community of researchers who may not need linear solvers.  Tpetra second application is for leveraging Trilinos solvers — linear and non-linear solvers and ROL for instance.
+\end{itemize}~%
+}
+
+\Response{\todo{Respond.}}
+
+\Comment{%
+\begin{itemize}%
+\item Additional comments on Trilinos, the authors do not need to alter the paper based on these comments.
+\begin{itemize}
+\item[A)] In addition to expanding the discussion in the paper on TPetra, the authors should update the web documentation for Trilinos calling attention to Tpetra's general utility for developers that are creating MPI+Kokkos codes.
+\end{itemize}~%
+\end{itemize}~%
+}%
+
+\Response{\todo{Respond.}}
+
+\Comment{%
+\begin{itemize}
+\item[]
+\begin{itemize}
+\item[B)] Users of Trilinos would greatly benefit from faster compile times.  For example, when building with CUDA, it takes nearly a day to compile.
+Even CPU builds of Trilinos take a long time.
+The principal challenge with using Trilinos is long compile times.
+There was no mention of compile times in the paper.
+\end{itemize}~%
+\end{itemize}~%
+}
+
+\Response{\todo{Respond.}}
+
+\Comment{
+\begin{itemize}
+\item[]
+\begin{itemize}
+\item[C)]Please update the Trilinos anaconda distribution with each release.  The current anaconda version of Trilinos is very dated.  Also, it would be great to offer CUDA and HIP anaconda distributions of Trilinos.  Having anaconda distributions would help users adopt Trilinos, eliminating the need to compile it.  Also, the paper never mentions that Trilinos is available as an anaconda package, not sure it needs mentioning though.
+\end{itemize}~%
+\end{itemize}~%
+}
+
+\Response{\todo{Respond.}}
+
+%\Response{Respond to the reviewer's comment.
+%Explain why we did changes to the manuscript based on his/her comment.
+%To quote a specific comment by the reviewer or a sentence from the manuscript,
+%use the \texttt{\textbackslash Quote\{Let's quote the reviewer!\}} command
+%yielding \QuoteReviewer{Let's quote the reviewer!}
+%The special formatting of this quote will help to identify it as a quote.}
+%
+%\Changes{Quote the changes sentence/paragraph/figure here.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Reviewer 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
+\Review{2}
+
+%%%%%%%%
+\Comment{Repeat the first comment by Reviewer 2 here.}
+
+\Response{Respond to the reviewer's comment.
+Explain why we did changes to the manuscript based on his/her comment.}
+
+\Changes{Quote the changes sentence/paragraph/figure here.}
+
+\end{document}

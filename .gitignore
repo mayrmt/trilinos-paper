@@ -5,9 +5,11 @@
 *.out
 *.log
 *.synctex.gz
+*.synctex(busy)
 main.fdb_latexmk
 main.fls
 main.pdf
+response_to_review.pdf
 comment.cut
 
 *-eps-converted-to.pdf
