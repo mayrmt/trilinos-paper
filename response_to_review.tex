@@ -252,11 +252,51 @@ author of [17], [18] with [19], [20].}
 \Review{3}
 
 %%%%%%%%
-\Comment{asdf}
+\Comment{Comments:
+This manuscript presents a comprehensive update on the Trilinos software
+framework, detailing its evolution, current architecture, core packages, and
+integration strategies for modern high-performance computing (HPC) environments.}
 
-\Response{Respond to the reviewer's comment.
-Explain why we did changes to the manuscript based on his/her comment.}
+\Comment{The manuscript is not original in the traditional scientific sense (e.g.,
+presenting new theorems or experimental results), but rather offers a
+state-of-the-art survey/update of a large-scale software ecosystem. Nonetheless,
+the documentation of such a mature, evolving scientific infrastructure is highly
+valuable for the computational science community.}
 
-\Changes{Quote the changes sentence/paragraph/figure here.}
+\Comment{The major contributions of the manuscript include an overview of the design
+decisions behind the recent shift towards Tpetra/Kokkos, a detailed description
+of the core packages, and an outline of the integration strategies for
+heterogeneous computing.}
+
+\Comment{The technical content is generally robust, but due to the review nature, many
+methodological details (e.g., numerical performance, limitations) are glossed
+over.}
+
+\Comment{Rather than being a glorified `ls -lah` of the Trilinos repository, the
+manuscript could have benefited from a more critical analysis of the design
+choices, performance trade-offs, and usability aspects of the framework,
+including at least some quantitative benchmarks for key packages, justifying the
+major shift that Trilinos has undergone in recent years.}
+
+\Comment{An overview of quantitative performance metrics for key packages (e.g., MueLu,
+FROSch, ROL), showing performance on various architectures, scaling trends, and
+comparing to earlier versions of Trilinos would enrich the manuscript
+significantly.}
+
+\Comment{Details on versioning, release engineering (TriBITS), and continuous integration
+are well-covered, but could be expanded providing a table of build/test matrix
+configurations, showing supported platforms (e.g., CUDA, ROCm, SYCL). Clarify
+how to contribute performance-tuned external Kokkos-based packages into
+Trilinos.}
+
+\Comment{While this is a software-focused paper, several experiments could significantly
+strengthen its utility, strong and weak scaling plots of FROSch, MueLu, and ROL
+on at least two architectures (e.g., AMD+ROCm vs. NVIDIA+CUDA), to validate
+performance portability claims.}
+
+\Comment{The manuscript is a high-quality overview of a critical scientific
+infrastructure. With the addition of quantitative benchmarks and minor editorial
+improvements, it will serve as a lasting reference for both developers and
+end-users in the HPC community.}
 
 \end{document}
